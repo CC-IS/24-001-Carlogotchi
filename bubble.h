@@ -1,3 +1,6 @@
+//https://notisrac.github.io/FileToCArray/
+// 16bit rrrrrggggggbbbbb, big-endian
+
 #define BUBBLE_HEIGHT 32
 #define BUBBLE_WIDTH 32
 

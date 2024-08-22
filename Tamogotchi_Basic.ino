@@ -12,7 +12,7 @@ const char * cfgPath = "/cfg.txt";
 //#include <ArduinoJson.hpp>
 
 // Include image arrays
-#include "smallDogs.h"
+#include "smallDogsAlt.h"
 #include "smallBg.h"
 #include "emoji.h"
 #include "bubble.h"
@@ -25,15 +25,15 @@ const char * cfgPath = "/cfg.txt";
 TFT_eSPI tft = TFT_eSPI();
 
 ///// Configurable options //////////////
-String openWeatherMapKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; //you'll need to get this app key from https://openweathermap.org/api_keys
+String openWeatherMapKey = "13814bdc6b51a9b56707ceb3585f3f90"; //you'll need to get this app key from https://openweathermap.org/api_keys
 
 // default configuration file; only used if the config.txt file hasn't been created. 
 // Add your wifi SSID and password into the respective arrays at the same index in each
 // For CarletonGuests, you'll need to get the board mac address to add it manually through the netreg process
 char cfgJson[] = "{ \
-  \"password\":[\"\"],\
-  \"ssid\":[\"CarletonGuests\"],\
-  \"clock\":true\,\
+  \"password\":[\"\",\"i<3making\"],\
+  \"ssid\":[\"CarletonGuests\",\"Growlberry's Home\"],\
+  \"clock\":true,\
   \"zipcode\":\"55057\"\
 }";
 
@@ -176,6 +176,8 @@ void writeConfig(){
 //import the config file from the flash.
 void readConfig(){
   File file = LittleFS.open(cfgPath); //open the config file
+  //deserializeJson(cfgDoc, cfgJson); //load the default config string
+  //writeConfig(); //and write it to the file.
   if(!file || file.isDirectory()){ //if the file doesn't exist yet,
       Serial.println("File does not exist, creating file from default.");
       deserializeJson(cfgDoc, cfgJson); //load the default config string
@@ -253,10 +255,10 @@ void setup()
 
   //set the text size and center the text for the splash screen.
   spr.setTextSize(3);
-  int twid = spr.textWidth("carl-o-gotchi");
+  int twid = spr.textWidth("nate-o-gotchi");
   spr.setCursor(120 - twid/2, 110);
   spr.setTextColor(TFT_WHITE);
-  spr.print("wade-o-gotchi");
+  spr.print("nate-o-gotchi");
 
   //push the frame buffer onto the screen
   spr.pushSprite(0,0);
